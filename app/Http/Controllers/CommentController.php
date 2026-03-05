@@ -61,12 +61,10 @@ class CommentController extends Controller
         // Contoh nanti: 'user_id' => Auth::id(),
         $comment = Comment::create([
             'ticket_id' => $ticket->id,
-            'user_id' => 1, // TEMPORARY - akan diganti Auth::id() di Minggu 4
+            'user_id' => 1,
             'content' => $cleanContent,
         ]);
 
-        // ✅ STEP 4: REDIRECT DENGAN FLASH MESSAGE
-        // Flash message juga akan di-escape di view dengan {{ }}
         return redirect()
             ->route('tickets.show', $ticket)
             ->with('success', 'Komentar berhasil ditambahkan!');
